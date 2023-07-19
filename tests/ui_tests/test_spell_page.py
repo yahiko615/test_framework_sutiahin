@@ -1,5 +1,4 @@
 # idk why but create_driver fixture didnt work without that import, and it also said that import didnt used yet
-from conftest import create_driver_spell_page, create_driver_spell_page_with_comments
 from page_objects.spell_page_pack.spell_page import SpellPage
 import pytest
 

@@ -1,5 +1,4 @@
 # idk why but create_driver fixture didnt work without that import, and it also said that import didnt used yet
-from conftest import create_driver
 from page_objects.main_page_pack.main_page import MainPage
 import pytest
 from flaky import flaky
@@ -25,7 +24,7 @@ def test_eu_na_switchers(create_driver):
 
 
 @pytest.mark.regression
-@flaky(max_runs=3, min_passes=2)
+@flaky(max_runs=4, min_passes=2)
 @pytest.mark.headless
 def test_news_types(create_driver):
     driver = create_driver

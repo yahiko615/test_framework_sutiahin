@@ -1,4 +1,3 @@
-from conftest import create_black_claw_page, create_battle_pet_page
 from page_objects.battle_pet_pack.battle_pet_abilities_page import BattlePetAbilities
 from page_objects.battle_pet_pack.pet_spell_page import PetSpell
 import pytest

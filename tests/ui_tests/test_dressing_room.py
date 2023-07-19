@@ -1,6 +1,4 @@
-from conftest import create_driver_dressing_room_page
 from page_objects.dressing_room_page.dressing_room_page import DressingRoom
-from page_objects.login_page_pack.login_page import LoginPage
 import pytest
 
 
