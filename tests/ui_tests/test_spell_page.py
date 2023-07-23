@@ -16,7 +16,7 @@ def test_search_input(create_driver_spell_page):
 def test_spell_params(create_driver_spell_page):
     driver = create_driver_spell_page
     spell_page = SpellPage(driver)
-    assert spell_page.check_spell_table_values(), 'Values of the table is not matching or table is missing!'
+    assert spell_page.is_spell_table_values_much(), 'Values of the table is not matching or table is missing!'
 
 
 @pytest.mark.regression
@@ -24,7 +24,7 @@ def test_spell_params(create_driver_spell_page):
 def test_comment_section_oldest_first_sorting(create_driver_spell_page):
     driver = create_driver_spell_page
     oldest_comment = SpellPage(driver).click_to_show_comments().click_oldest_first()
-    assert oldest_comment.check_of_oldest_comment_on_top(), 'Oldest comment should be on to after' \
+    assert oldest_comment.is_oldest_comment_on_top(), 'Oldest comment should be on to after' \
                                                             ' clicking on sorting!'
 
 
@@ -45,5 +45,5 @@ def test_comments_pagination(create_driver_spell_page_with_comments):
 def test_comment_section_highest_rated_first_sorting(create_driver_spell_page_with_comments):
     driver = create_driver_spell_page_with_comments
     highest_comment = SpellPage(driver).click_to_show_comments().click_highest_rated_first()
-    assert highest_comment.check_of_highest_comment_on_top(), 'Highest comment should be on to ' \
+    assert highest_comment.is_highest_comment_on_top(), 'Highest comment should be on to ' \
                                                               'after clicking on sorting!'

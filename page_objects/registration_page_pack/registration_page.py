@@ -10,8 +10,12 @@ from utilities.ui_utilities.base_page import BasePage
 class RegistrationPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
-    __page = 'registration'
     __h1_label = (By.XPATH, "//h1[@class='heading-size-1']")
 
     def is_label_displayed(self):
-        return self.is_text_present(self.__page, self.__h1_label)
+        text_registration = 'Registration - Step 1 of 2'
+        element_text = self.get_text(self.__h1_label)
+        if text_registration in element_text:
+            return True
+        else:
+            return False

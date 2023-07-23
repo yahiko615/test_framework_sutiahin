@@ -25,7 +25,7 @@ def test_shoulders(create_driver_dressing_room_page):
 def test_screenshot_downloading(create_driver_dressing_room_page):
     driver = create_driver_dressing_room_page
     dressing_room = DressingRoom(driver).click_screenshot_download()
-    assert dressing_room.check_if_screen_is_downloaded(), 'Screenshot is not downloaded!'
+    assert dressing_room.is_screen_is_downloaded(), 'Screenshot is not downloaded!'
 
 
 @pytest.mark.regression

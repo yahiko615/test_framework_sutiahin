@@ -30,10 +30,6 @@ class BasePage:
     def click(self, locator):
         self.__wait_until_element_clickable(locator).click()
 
-    # def click_and_wait(self, locator, seconds):
-    #     self.__wait_until_element_clickable(locator).click()
-    #     time.sleep(seconds)
-
     def is_displayed(self, locator):
         user_label_element = self.__wait_until_element_visible(locator)
         return user_label_element.is_displayed()
@@ -108,31 +104,6 @@ class BasePage:
             return len(elements) == 0
         except TimeoutException:
             return True
-
-    def is_text_present(self, page, locator):
-        text_forgot_password = 'Password Reset: Step 1 of 2'
-        text_resend = 'Re-Send Verification Email'
-        text_registration = 'Registration - Step 1 of 2'
-        if page == 'forgot_password':
-            element_text = self.get_text(locator)
-            if text_forgot_password in element_text:
-                return True
-            else:
-                return False
-        elif page == 'resend':
-            element_text = self.get_text(locator)
-            if text_resend in element_text:
-                return True
-            else:
-                return False
-        elif page == 'registration':
-            element_text = self.get_text(locator)
-            if text_registration in element_text:
-                return True
-            else:
-                return False
-        else:
-            return False
 
     def move_slider_to(self, locator_left, locator_width, desired_position):
         element = self.__wait_until_element_visible(locator_left)

@@ -45,7 +45,7 @@ class SpellPage(BasePage):
         self.click(self.__add_to_favorites_locator)
         return LoginPage(self._driver)
 
-    def check_spell_table_values(self) -> bool:
+    def is_spell_table_values_much(self) -> bool:
         try:
             table = self._wait.until(EC.visibility_of_element_located(self.__table_locator))
             rows = table.find_elements(By.CSS_SELECTOR, self.__rows_locator)
@@ -73,7 +73,7 @@ class SpellPage(BasePage):
         self.click(self.__oldest_comment_first_sorting_locator)
         return self
 
-    def check_of_oldest_comment_on_top(self):
+    def is_oldest_comment_on_top(self):
         element_1 = self.get_element(By.XPATH, self.__oldest_comment_locator)
         date_1 = datetime.strptime(element_1.text[3:], "%Y/%m/%d")
 
@@ -105,7 +105,7 @@ class SpellPage(BasePage):
         self.click(self.__highest_rated_comment_filter_locator)
         return self
 
-    def check_of_highest_comment_on_top(self):
+    def is_highest_comment_on_top(self):
         element_1 = self.get_element_by_locator(self.__highest_rated_comment_locator)
         date_1 = element_1.text
 

@@ -1,5 +1,5 @@
 import os
-
+from pathlib import Path
 from selenium.webdriver.common.by import By
 
 from utilities.ui_utilities.base_page import BasePage
@@ -23,7 +23,7 @@ class DressingRoom(BasePage):
     __screenshot_button_locator = (By.CSS_SELECTOR, "#dr-screenshot")
     __save_outfit_button_locator = (By.CSS_SELECTOR, "#dr-save")
     __toggle_ui_button_locator = (By.CSS_SELECTOR, "#dr-toggle-ui")
-    __downloads_dir = r"C:\Users\Admin\Downloads"
+    __downloads_dir = Path.home().joinpath("Downloads")
     __you_must_be_log_in_to_save_locator = (
         By.XPATH, "//*[contains(text(), 'You must be logged in to use this feature')]")
     __canvas_locator = (By.XPATH, '//div[@class="dressing-room-character"]')
@@ -41,7 +41,7 @@ class DressingRoom(BasePage):
                 return self.file_name
         return None
 
-    def check_if_screen_is_downloaded(self):
+    def is_screen_is_downloaded(self):
         self.find_screenshot()
         if self.file_name:
             return True

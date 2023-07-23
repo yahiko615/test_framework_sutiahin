@@ -70,7 +70,7 @@ class BattlePetAbilities(BasePage):
         self.click(self.__name_column_name_locator)
         return self
 
-    def check_of_what_element_on_top(self):
+    def is_element_on_top(self):
         element_1 = self.get_element_by_locator(self.__name_column_first_item_locator)
         element_2 = self.get_element_by_locator(self.__name_column_second_item_locator)
 

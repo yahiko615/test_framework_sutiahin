@@ -15,13 +15,13 @@ class PetSpell(BasePage):
         self.move_slider_to(self.__slider_locator, self.__slider_progress_locator, desired_position="50%")
         return self
 
-    def right_dmg_scaling_is_displayed(self):
+    def is_right_dmg_scaling_is_displayed(self):
         return self.get_element_style(self.__slider_locator) == "left: 50%;"
 
-    def right_spell_found(self):
+    def is_right_spell_found(self):
         return self.is_displayed(self.__searched_spell_page_locator) \
             and self.get_text(self.__searched_spell_page_locator) == 'Expunge'
 
-    def right_spell_found_after_column_sorting(self):
+    def is_right_spell_found_after_column_sorting(self):
         return self.is_displayed(self.__searched_spell_page_locator) \
             and self.get_text(self.__searched_spell_page_locator) == 'Evolving Bite'

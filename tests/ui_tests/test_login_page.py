@@ -8,7 +8,8 @@ import pytest
 @pytest.mark.smoke
 @pytest.mark.headless
 def test_login_without_checked_captcha(create_driver_login_page, env):
-    user_name, password = env.email, env.password
+    env = dict(env)
+    user_name, password = env["email"], env["password"]
     driver = create_driver_login_page
     login_page = LoginPage(driver).set_email(user_name).set_password(password).click_login()
     assert login_page.is_error_captha_text_displayed(), 'Error text is not displayed'
