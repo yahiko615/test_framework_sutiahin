@@ -5,7 +5,8 @@ from pathlib import Path
 import pytest
 from selenium.webdriver.chrome.options import Options
 
-from utilities.config_object import ConfigObject
+from api_collections.booking_api import BookingAPI
+from api_collections.data_classes.booking_data import Booking
 from utilities.driver_factory import create_driver_factory
 
 _screenshot_path = Path.home().joinpath("Downloads")
@@ -72,3 +73,21 @@ def create_black_claw_page(request, env):
 @pytest.fixture
 def create_battle_pet_page(request, env):
     yield from create_driver_for_page(request, env, env["battle_pet_page"])
+
+
+@pytest.fixture
+def create_mock_booking(env):
+    mock_data = BookingAPI(env).get_booking_by_id(52)
+    response = json.loads(mock_data.text)
+    booking = Booking(**response)
+    return booking
+
+
+@pytest.fixture
+def create_mock_booking_with_id(env):
+    mock_data = BookingAPI(env).create_booking(Booking())
+    book_body = mock_data.json()['booking']
+    booking = Booking(**book_body)
+    booking.update_data(**{'bookingid': mock_data.json()['bookingid']})
+    return booking
+
