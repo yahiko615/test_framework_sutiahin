@@ -91,11 +91,13 @@ def create_mock_booking_with_id(env):
     booking.update_data(**{'bookingid': mock_data.json()['bookingid']})
     return booking
 
+
 @pytest.fixture()
 def booking_auth_api(env):
     booking_auth_api = BookingAPI(env)
     booking_auth_api.setup_token(env)
     return booking_auth_api
+
 
 @pytest.fixture
 def create_mock_booking_with_id(env):
