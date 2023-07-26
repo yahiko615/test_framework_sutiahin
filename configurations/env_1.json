@@ -1,14 +1,17 @@
 {
-"app_url": "https://www.wowhead.com/",
-"spell_page": "https://www.wowhead.com/spell=1/",
-"login_page": "https://www.wowhead.com/account=signin",
-"dressing_room_page": "https://www.wowhead.com/dressing-room",
-"spell_page_with_comments": "https://www.wowhead.com/spell=1804/",
-"black_claw_page": "https://www.wowhead.com/pet-ability=919/black-claw",
-"battle_pet_page": "https://www.wowhead.com/battle-pet-abilities",
-
-"email": "howdydoodyxd@gmail.com",
-"password": "Qwerty",
-
-"browser_id": 1
+  "app_url": "https://www.wowhead.com/",
+  "spell_page": "https://www.wowhead.com/spell=1/",
+  "login_page": "https://www.wowhead.com/account=signin",
+  "dressing_room_page": "https://www.wowhead.com/dressing-room",
+  "spell_page_with_comments": "https://www.wowhead.com/spell=1804/",
+  "black_claw_page": "https://www.wowhead.com/pet-ability=919/black-claw",
+  "battle_pet_page": "https://www.wowhead.com/battle-pet-abilities",
+  "email": "howdydoodyxd@gmail.com",
+  "password": "Qwerty",
+  "base_api": "https://restful-booker.herokuapp.com",
+  "browser_id": 1,
+   "credentials": {
+    "username": "admin",
+    "password": "password123"
+  }
 }
