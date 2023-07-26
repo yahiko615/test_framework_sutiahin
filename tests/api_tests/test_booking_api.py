@@ -11,7 +11,7 @@ HTTP_CODE_NOT_FOUND_ERROR = f'Status code is different form expected. Expected: 
 
 def test_status_code_200(env, create_mock_booking):
     booking_api = BookingAPI(env)
-    response = booking_api.get_booking_by_id(booking_id=1)
+    response = booking_api.get_booking_by_id(booking_id=52)
     data = json.loads(response.text)
     assert response.status_code == HTTPStatus.OK, HTTP_CODE_OK_ERROR
     actual_booking = Booking(**data)
