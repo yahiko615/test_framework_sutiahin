@@ -3,6 +3,7 @@ from http import HTTPStatus
 
 from api_collections.booking_api import BookingAPI
 from api_collections.data_classes.booking_data import Booking
+import allure
 
 HTTP_CODE_OK_ERROR = f'Status code is different form expected. Expected: {HTTPStatus.OK}'
 HTTP_CODE_CREATED_ERROR = f'Status code is different form expected. Expected: {HTTPStatus.CREATED}'
@@ -20,7 +21,7 @@ def test_status_code_200(env, create_mock_booking):
 
 def test_get_ids(env):
     booking_api = BookingAPI(env)
-    response = booking_api.get_booking()
+    response = booking_api.get_bookings()
     assert response.status_code == HTTPStatus.OK, HTTP_CODE_OK_ERROR
     assert 'bookingid' in response.json()[0], 'Bookingid is missing'
 
