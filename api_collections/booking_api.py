@@ -28,7 +28,7 @@ class BookingAPI(BaseAPI):
         response = self.get(f'{self.__booking_url}{booking_id}', headers=headers)
         return response
 
-    def get_booking(self, headers=None):
+    def get_bookings(self, headers=None):
         """
         Get a list of all bookings.
 

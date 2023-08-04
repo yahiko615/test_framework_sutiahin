@@ -1,10 +1,13 @@
 import os
 from pathlib import Path
 from selenium.webdriver.common.by import By
+import allure
 
+from conftest import auto_step
 from utilities.ui_utilities.base_page import BasePage
 
 
+@auto_step
 class DressingRoom(BasePage):
     def __init__(self, driver):
         super().__init__(driver)

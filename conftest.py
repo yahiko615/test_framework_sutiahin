@@ -1,7 +1,9 @@
 import json
+from contextlib import suppress
 import os
 from pathlib import Path
-
+import allure
+import inspect
 import pytest
 from selenium.webdriver.chrome.options import Options
 
@@ -12,6 +14,13 @@ from utilities.driver_factory import create_driver_factory
 _screenshot_path = Path.home().joinpath("Downloads")
 
 
+def auto_step(cls):
+    for name, method in inspect.getmembers(cls, inspect.isfunction):
+        if not name.startswith('_'):
+            setattr(cls, name, allure.step(method))
+    return cls
+
+
 @pytest.fixture(scope="session", autouse=True)
 def env():
     config_file = "configurations/env_1.json"
@@ -20,6 +29,14 @@ def env():
         file_data = file.read()
     json_data = json.loads(file_data)
     return json_data
+
+
+@pytest.hookimpl(hookwrapper=True, tryfirst=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    rep = outcome.get_result()
+    setattr(item, "rep_" + rep.when, rep)
+    return rep
 
 
 def create_driver_for_page(request, env, page_url):
@@ -33,6 +50,11 @@ def create_driver_for_page(request, env, page_url):
     driver.get(page_url)
     driver.maximize_window()
     yield driver
+    if request.node.rep_call.failed:
+        with suppress(Exception):
+            allure.attach(driver.get_screenshot_as_png(),
+                          name=request.function.__name__,
+                          attachment_type=allure.attachment_type.PNG)
     driver.quit()
 
 
@@ -90,4 +112,3 @@ def create_mock_booking_with_id(env):
     booking = Booking(**book_body)
     booking.update_data(**{'bookingid': mock_data.json()['bookingid']})
     return booking
-
