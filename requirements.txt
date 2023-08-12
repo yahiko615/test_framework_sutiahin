@@ -4,3 +4,4 @@ flaky==3.7.0
 requests==2.31
 allure-pytest==2.13.2
 sqlalchemy ==2.0.19
+pymongo==4.4.1
