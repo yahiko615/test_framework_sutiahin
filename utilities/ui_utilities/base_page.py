@@ -10,7 +10,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 class BasePage:
     def __init__(self, driver):
         self._driver = driver
-        self._wait = WebDriverWait(self._driver, 40)
+        self._wait = WebDriverWait(self._driver, 25)
 
     def __wait_until_element_visible(self, locator: tuple):
         return self._wait.until(EC.visibility_of_element_located(locator))
