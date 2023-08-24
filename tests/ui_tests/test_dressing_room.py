@@ -9,7 +9,7 @@ import pytest
 @allure.severity('CRITICAL')
 @pytest.mark.smoke
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@flaky(max_runs=4, min_passes=1)
 def test_helm(create_driver_dressing_room_page):
     driver = create_driver_dressing_room_page
     text = 'Sum'
@@ -20,7 +20,7 @@ def test_helm(create_driver_dressing_room_page):
 @allure.feature('Dressing Room Page')
 @pytest.mark.regression
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@flaky(max_runs=4, min_passes=1)
 def test_shoulders(create_driver_dressing_room_page):
     driver = create_driver_dressing_room_page
     text = 'ald'
