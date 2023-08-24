@@ -8,7 +8,7 @@ from flaky import flaky
 @allure.feature('Spell Page')
 @pytest.mark.smoke
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@flaky(max_runs=4, min_passes=1)
 def test_search_input(create_driver_spell_page):
     driver = create_driver_spell_page
     spell_page = SpellPage(driver).click_add_to_favorites()
@@ -18,7 +18,7 @@ def test_search_input(create_driver_spell_page):
 @allure.feature('Spell Page')
 @pytest.mark.smoke
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@flaky(max_runs=4, min_passes=1)
 def test_spell_params(create_driver_spell_page):
     driver = create_driver_spell_page
     spell_page = SpellPage(driver)
@@ -28,7 +28,7 @@ def test_spell_params(create_driver_spell_page):
 @allure.feature('Spell Page')
 @pytest.mark.regression
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@flaky(max_runs=4, min_passes=1)
 def test_comment_section_oldest_first_sorting(create_driver_spell_page):
     driver = create_driver_spell_page
     oldest_comment = SpellPage(driver).click_to_show_comments().click_oldest_first()
@@ -39,7 +39,7 @@ def test_comment_section_oldest_first_sorting(create_driver_spell_page):
 @allure.feature('Spell Page')
 @pytest.mark.regression
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@flaky(max_runs=4, min_passes=1)
 def test_comments_pagination(create_driver_spell_page_with_comments):
     driver = create_driver_spell_page_with_comments
     comments_page = SpellPage(driver).click_to_show_comments()
@@ -53,7 +53,7 @@ def test_comments_pagination(create_driver_spell_page_with_comments):
 @allure.feature('Spell Page')
 @pytest.mark.regression
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@flaky(max_runs=4, min_passes=1)
 def test_comment_section_highest_rated_first_sorting(create_driver_spell_page_with_comments):
     driver = create_driver_spell_page_with_comments
     highest_comment = SpellPage(driver).click_to_show_comments().click_highest_rated_first()
