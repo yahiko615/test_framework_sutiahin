@@ -1,8 +1,10 @@
 # idk why but create_driver fixture didnt work without that import, and it also said that import didnt used yet
 from page_objects.spell_page_pack.spell_page import SpellPage
 import pytest
+import allure
 
 
+@allure.feature('Spell Page')
 @pytest.mark.smoke
 @pytest.mark.headless
 def test_search_input(create_driver_spell_page):
@@ -11,6 +13,7 @@ def test_search_input(create_driver_spell_page):
     assert spell_page.is_login_screen_text_displayed(), 'Login page is not shown!'
 
 
+@allure.feature('Spell Page')
 @pytest.mark.smoke
 @pytest.mark.headless
 def test_spell_params(create_driver_spell_page):
@@ -19,6 +22,7 @@ def test_spell_params(create_driver_spell_page):
     assert spell_page.is_spell_table_values_much(), 'Values of the table is not matching or table is missing!'
 
 
+@allure.feature('Spell Page')
 @pytest.mark.regression
 @pytest.mark.headless
 def test_comment_section_oldest_first_sorting(create_driver_spell_page):
@@ -28,6 +32,7 @@ def test_comment_section_oldest_first_sorting(create_driver_spell_page):
                                                             ' clicking on sorting!'
 
 
+@allure.feature('Spell Page')
 @pytest.mark.regression
 @pytest.mark.headless
 def test_comments_pagination(create_driver_spell_page_with_comments):
@@ -40,6 +45,7 @@ def test_comments_pagination(create_driver_spell_page_with_comments):
     assert comments_page.comment_page_is_displayed(3), 'Last page is not shown!'
 
 
+@allure.feature('Spell Page')
 @pytest.mark.regression
 @pytest.mark.headless
 def test_comment_section_highest_rated_first_sorting(create_driver_spell_page_with_comments):

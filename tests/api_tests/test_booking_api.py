@@ -10,6 +10,7 @@ HTTP_CODE_CREATED_ERROR = f'Status code is different form expected. Expected: {H
 HTTP_CODE_NOT_FOUND_ERROR = f'Status code is different form expected. Expected: {HTTPStatus.NOT_FOUND}'
 
 
+@allure.feature('Api main')
 def test_status_code_200(env, create_mock_booking):
     booking_api = BookingAPI(env)
     response = booking_api.get_booking_by_id(booking_id=52)
@@ -19,6 +20,7 @@ def test_status_code_200(env, create_mock_booking):
     assert create_mock_booking.get_dict_without_id() == actual_booking.get_dict_without_id()
 
 
+@allure.feature('Api main')
 def test_get_ids(env):
     booking_api = BookingAPI(env)
     response = booking_api.get_bookings()
@@ -26,6 +28,7 @@ def test_get_ids(env):
     assert 'bookingid' in response.json()[0], 'Bookingid is missing'
 
 
+@allure.feature('Api main')
 def test_create_booking(env, create_mock_booking_with_id):
     booking_api = BookingAPI(env)
     response = booking_api.create_booking(create_mock_booking_with_id)
@@ -36,6 +39,7 @@ def test_create_booking(env, create_mock_booking_with_id):
     assert created_booking == create_mock_booking_with_id.get_dict_without_id(), ''
 
 
+@allure.feature('Api main')
 def test_update_booking(create_mock_booking_with_id, env):
     booking_api = BookingAPI(env)
     booking_api.setup_token(env)
@@ -51,6 +55,7 @@ def test_update_booking(create_mock_booking_with_id, env):
         'Booking update error. Param totalprice differents'
 
 
+@allure.feature('Api main')
 def test_patch_booking(env, create_mock_booking_with_id):
     booking_api = BookingAPI(env)
     booking_api.setup_token(env)
@@ -64,6 +69,7 @@ def test_patch_booking(env, create_mock_booking_with_id):
         'totalprice'], 'Booking patch error. Param totalprice differents'
 
 
+@allure.feature('Api main')
 def test_delete_booking(env, create_mock_booking_with_id):
     booking_api = BookingAPI(env)
     booking_api.setup_token(env)
@@ -74,6 +80,7 @@ def test_delete_booking(env, create_mock_booking_with_id):
     assert result_after_delete.status_code == HTTPStatus.NOT_FOUND, HTTP_CODE_NOT_FOUND_ERROR
 
 
+@allure.feature('Api main')
 def test_get_non_existent_booking(env, create_mock_booking):
     booking_api = BookingAPI(env)
     response = booking_api.get_booking_by_id(booking_id='qew')

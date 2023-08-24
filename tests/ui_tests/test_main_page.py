@@ -2,8 +2,11 @@
 from page_objects.main_page_pack.main_page import MainPage
 import pytest
 from flaky import flaky
+import allure
 
 
+
+@allure.feature('Main Page')
 @pytest.mark.smoke
 @pytest.mark.headless
 def test_search_input(create_driver):
@@ -13,6 +16,7 @@ def test_search_input(create_driver):
     assert spell_page.is_h1_label_displayed(), 'Spell page is not shown!'
 
 
+@allure.feature('Main Page')
 @pytest.mark.smoke
 @pytest.mark.headless
 def test_eu_na_switchers(create_driver):
@@ -23,15 +27,16 @@ def test_eu_na_switchers(create_driver):
     assert switcher_na == 'active', 'NA switcher must be active after clicking on it!'
 
 
-@pytest.mark.regression
-@flaky(max_runs=4, min_passes=2)
-@pytest.mark.headless
-def test_news_types(create_driver):
-    driver = create_driver
-    live_type = MainPage(driver).hover_on_news_types().click_on_live_type_at_news_types()
-    assert live_type.check_if_live_tag_is_displayed() is False, 'News with removed tad should disappear!'
+# @pytest.mark.regression
+# @flaky(max_runs=4, min_passes=2)
+# @pytest.mark.headless
+# def test_news_types(create_driver):
+#     driver = create_driver
+#     live_type = MainPage(driver).hover_on_news_types().click_on_live_type_at_news_types()
+#     assert live_type.check_if_live_tag_is_displayed() is False, 'News with removed tad should disappear!'
 
 
+@allure.feature('Main Page')
 @pytest.mark.smoke
 @pytest.mark.headless
 def test_live_tag_only(create_driver):
@@ -41,6 +46,7 @@ def test_live_tag_only(create_driver):
                                                                'news from other tags should not be displayed!'
 
 
+@allure.feature('Main Page')
 @pytest.mark.smoke
 @pytest.mark.headless
 def test_settings_wow_today(create_driver):

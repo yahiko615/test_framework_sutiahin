@@ -3,8 +3,10 @@ from page_objects.login_page_pack.login_page import LoginPage
 from page_objects.registration_page_pack.forgot_password_page import ForgotPasswordPage
 from utilities.config_reader import ReadConfig
 import pytest
+import allure
 
 
+@allure.feature('Login Page')
 @pytest.mark.smoke
 @pytest.mark.headless
 def test_login_without_checked_captcha(create_driver_login_page, env):
@@ -15,6 +17,7 @@ def test_login_without_checked_captcha(create_driver_login_page, env):
     assert login_page.is_error_captha_text_displayed(), 'Error text is not displayed'
 
 
+@allure.feature('Login Page')
 @pytest.mark.smoke
 @pytest.mark.headless
 def test_lend_to_reg_page(create_driver_login_page):
@@ -23,6 +26,7 @@ def test_lend_to_reg_page(create_driver_login_page):
     assert login_page.is_label_displayed(), 'Registration page label text is not shown'
 
 
+@allure.feature('Login Page')
 @pytest.mark.smoke
 @pytest.mark.headless
 def test_lend_resend_page(create_driver_login_page):
@@ -31,6 +35,7 @@ def test_lend_resend_page(create_driver_login_page):
     assert login_page.is_label_displayed(), 'Resend page label text is not shown'
 
 
+@allure.feature('Login Page')
 @pytest.mark.smoke
 @pytest.mark.headless
 def test_lend_forgot_pass_page(create_driver_login_page):
