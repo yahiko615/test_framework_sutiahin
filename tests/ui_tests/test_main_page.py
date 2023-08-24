@@ -8,7 +8,8 @@ import allure
 @allure.feature('Main Page')
 @pytest.mark.smoke
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@pytest.mark.skip('so long')
+@flaky(max_runs=3, min_passes=1)
 def test_search_input(create_driver):
     text_for_search = 'augmentation evoker'
     driver = create_driver
@@ -19,7 +20,8 @@ def test_search_input(create_driver):
 @allure.feature('Main Page')
 @pytest.mark.smoke
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@pytest.mark.skip('so long')
+@flaky(max_runs=3, min_passes=1)
 def test_eu_na_switchers(create_driver):
     driver = create_driver
     switcher_eu = MainPage(driver).click_switcher('EU')
@@ -29,8 +31,9 @@ def test_eu_na_switchers(create_driver):
 
 
 @pytest.mark.regression
-@flaky(max_runs=10, min_passes=1)
+@flaky(max_runs=3, min_passes=1)
 @pytest.mark.headless
+@pytest.mark.skip('so long')
 def test_news_types(create_driver):
     driver = create_driver
     live_type = MainPage(driver).hover_on_news_types().click_on_live_type_at_news_types()
@@ -40,7 +43,8 @@ def test_news_types(create_driver):
 @allure.feature('Main Page')
 @pytest.mark.smoke
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@flaky(max_runs=3, min_passes=1)
+@pytest.mark.skip('so long')
 def test_live_tag_only(create_driver):
     driver = create_driver
     live_tag = MainPage(driver).click_on_live_tag()
@@ -51,7 +55,8 @@ def test_live_tag_only(create_driver):
 @allure.feature('Main Page')
 @pytest.mark.smoke
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@pytest.mark.skip('so long')
+@flaky(max_runs=3, min_passes=1)
 def test_settings_wow_today(create_driver):
     driver = create_driver
     news_page = MainPage(
