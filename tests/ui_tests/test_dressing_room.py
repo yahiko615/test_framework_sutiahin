@@ -3,40 +3,33 @@ from flaky import flaky
 from page_objects.dressing_room_page.dressing_room_page import DressingRoom
 import pytest
 
-#
-# @allure.feature('Dressing Room Page')
-# @allure.issue('https://docs.qameta.io/allure/', 'Wrong asertion')
-# @allure.severity('CRITICAL')
-# @pytest.mark.smoke
-# @pytest.mark.headless
-# @flaky(max_runs=10, min_passes=1)
-# def test_helm(create_driver_dressing_room_page):
-#     driver = create_driver_dressing_room_page
-#     text = 'Sum'
-#     dressing_room = DressingRoom(driver).click_helm().set_search(text).click_new_helm()
-#     assert dressing_room.is_new_helm_is_displayed() == 'bla', 'New helm is not displayed'
-#
-#
-# @allure.feature('Dressing Room Page')
-# @pytest.mark.regression
-# @pytest.mark.headless
-# @flaky(max_runs=10, min_passes=1)
-# def test_shoulders(create_driver_dressing_room_page):
-#     driver = create_driver_dressing_room_page
-#     text = 'ald'
-#     dressing_room = DressingRoom(driver).click_shoulders().click_replace().set_search(text).click_new_shoulders()
-#     assert dressing_room.is_new_shoulders_is_displayed(), 'New shoulders is not displayed'
+@allure.feature('Dressing Room Page')
+@allure.issue('https://docs.qameta.io/allure/', 'Wrong asertion')
+@allure.severity('CRITICAL')
+@pytest.mark.smoke
+@pytest.mark.headless
+@pytest.mark.skip('so long')
+@flaky(max_runs=4, min_passes=1)
+def test_helm(create_driver_dressing_room_page):
+    driver = create_driver_dressing_room_page
+    text = 'Sum'
+    dressing_room = DressingRoom(driver).click_helm().set_search(text).click_new_helm()
+    assert dressing_room.is_new_helm_is_displayed() == 'bla', 'New helm is not displayed'
 
 
-# @allure.feature('Dressing Room Page')
-# @pytest.mark.smoke
-# @pytest.mark.headless
-# def test_screenshot_downloading(create_driver_dressing_room_page):
-#     driver = create_driver_dressing_room_page
-#     dressing_room = DressingRoom(driver).click_screenshot_download()
-#     assert dressing_room.is_screen_is_downloaded(), 'Screenshot is not downloaded!'
+@allure.feature('Dressing Room Page')
+@pytest.mark.regression
+@pytest.mark.headless
+@flaky(max_runs=4, min_passes=1)
+@pytest.mark.skip('so long')
+def test_shoulders(create_driver_dressing_room_page):
+    driver = create_driver_dressing_room_page
+    text = 'ald'
+    dressing_room = DressingRoom(driver).click_shoulders().click_replace().set_search(text).click_new_shoulders()
+    assert dressing_room.is_new_shoulders_is_displayed(), 'New shoulders is not displayed'
 
-
+    
+    
 @allure.feature('Dressing Room Page')
 @pytest.mark.regression
 @pytest.mark.headless
