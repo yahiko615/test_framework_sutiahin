@@ -5,6 +5,7 @@ HTTP_CODE_CREATED_ERROR = f'Status code is different form expected. Expected: {H
 import allure
 
 
+@allure.feature('api ping')
 def test_ping(env):
     ping_api = PingAPI(env)
     response = ping_api.ping()
