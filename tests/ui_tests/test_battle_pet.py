@@ -8,7 +8,7 @@ from flaky import flaky
 @allure.feature('Battle Pet Page')
 @pytest.mark.regression
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@flaky(max_runs=4, min_passes=1)
 def test_class_changing(create_black_claw_page):
     driver = create_black_claw_page
     pet_ability = PetSpell(driver).move_slider()
@@ -18,7 +18,7 @@ def test_class_changing(create_black_claw_page):
 @allure.feature('Battle Pet Page')
 @pytest.mark.regression
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@flaky(max_runs=4, min_passes=1)
 def test_search_by_spell_name(create_battle_pet_page):
     driver = create_battle_pet_page
     item = 'Expunge'
@@ -29,7 +29,7 @@ def test_search_by_spell_name(create_battle_pet_page):
 @allure.feature('Battle Pet Page')
 @pytest.mark.regression
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@flaky(max_runs=4, min_passes=1)
 def test_remove_filter(create_battle_pet_page):
     driver = create_battle_pet_page
     item = 'Expunge'
@@ -43,7 +43,7 @@ def test_remove_filter(create_battle_pet_page):
 @allure.feature('Battle Pet Page')
 @pytest.mark.regression
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@flaky(max_runs=4, min_passes=1)
 def test_column_sorting(create_battle_pet_page):
     driver = create_battle_pet_page
     pet_ability = BattlePetAbilities(driver).click_column_filtering().click_add_column_filter() \
@@ -54,7 +54,7 @@ def test_column_sorting(create_battle_pet_page):
 @allure.feature('Battle Pet Page')
 @pytest.mark.regression
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@flaky(max_runs=4, min_passes=1)
 def test_column_filtering(create_battle_pet_page):
     driver = create_battle_pet_page
     pet_ability = BattlePetAbilities(driver).click_damage_column_name()
