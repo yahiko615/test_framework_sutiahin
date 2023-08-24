@@ -10,7 +10,7 @@ from flaky import flaky
 @allure.feature('Login Page')
 @pytest.mark.smoke
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@flaky(max_runs=4, min_passes=1)
 def test_login_without_checked_captcha(create_driver_login_page, env):
     env = dict(env)
     user_name, password = env["email"], env["password"]
@@ -22,7 +22,7 @@ def test_login_without_checked_captcha(create_driver_login_page, env):
 @allure.feature('Login Page')
 @pytest.mark.smoke
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@flaky(max_runs=4, min_passes=1)
 def test_lend_to_reg_page(create_driver_login_page):
     driver = create_driver_login_page
     login_page = LoginPage(driver).click_new_account()
@@ -32,7 +32,7 @@ def test_lend_to_reg_page(create_driver_login_page):
 @allure.feature('Login Page')
 @pytest.mark.smoke
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@flaky(max_runs=4, min_passes=1)
 def test_lend_resend_page(create_driver_login_page):
     driver = create_driver_login_page
     login_page = LoginPage(driver).click_resend()
@@ -42,7 +42,7 @@ def test_lend_resend_page(create_driver_login_page):
 @allure.feature('Login Page')
 @pytest.mark.smoke
 @pytest.mark.headless
-@flaky(max_runs=10, min_passes=1)
+@flaky(max_runs=4, min_passes=1)
 def test_lend_forgot_pass_page(create_driver_login_page):
     driver = create_driver_login_page
     login_page = LoginPage(driver).click_forgot_password()
