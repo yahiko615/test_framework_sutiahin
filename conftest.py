@@ -7,8 +7,7 @@ import inspect
 import pytest
 from selenium.webdriver.chrome.options import Options
 
-from api_collections.booking_api import BookingAPI
-from api_collections.data_classes.booking_data import Booking
+
 from utilities.driver_factory import create_driver_factory
 
 _screenshot_path = Path.home().joinpath("Downloads")
@@ -59,56 +58,9 @@ def create_driver_for_page(request, env, page_url):
 
 
 @pytest.fixture
-def create_driver(request, env):
+def create_driver_product_cart(request, env):
     yield from create_driver_for_page(request, env, env["app_url"])
 
 
-@pytest.fixture
-def create_driver_spell_page(request, env):
-    yield from create_driver_for_page(request, env, env["spell_page"])
 
 
-@pytest.fixture
-def create_driver_spell_page_with_comments(request, env):
-    yield from create_driver_for_page(request, env, env["spell_page_with_comments"])
-
-
-@pytest.fixture
-def create_driver_login_page(request, env):
-    yield from create_driver_for_page(request, env, env["login_page"])
-
-
-@pytest.fixture
-def create_driver_dressing_room_page(request, env):
-    yield from create_driver_for_page(request, env, env["dressing_room_page"])
-    for file_name in os.listdir(_screenshot_path):
-        if file_name.__contains__("Wowhead Dressing Room"):
-            file_path = os.path.join(_screenshot_path, file_name)
-            os.remove(file_path)
-
-
-@pytest.fixture
-def create_black_claw_page(request, env):
-    yield from create_driver_for_page(request, env, env["black_claw_page"])
-
-
-@pytest.fixture
-def create_battle_pet_page(request, env):
-    yield from create_driver_for_page(request, env, env["battle_pet_page"])
-
-
-@pytest.fixture
-def create_mock_booking(env):
-    mock_data = BookingAPI(env).get_booking_by_id(52)
-    response = json.loads(mock_data.text)
-    booking = Booking(**response)
-    return booking
-
-
-@pytest.fixture
-def create_mock_booking_with_id(env):
-    mock_data = BookingAPI(env).create_booking(Booking())
-    book_body = mock_data.json()['booking']
-    booking = Booking(**book_body)
-    booking.update_data(**{'bookingid': mock_data.json()['bookingid']})
-    return booking

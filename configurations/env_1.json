@@ -1,17 +1,9 @@
 {
-  "app_url": "https://www.wowhead.com/",
-  "spell_page": "https://www.wowhead.com/spell=1/",
-  "login_page": "https://www.wowhead.com/account=signin",
-  "dressing_room_page": "https://www.wowhead.com/dressing-room",
-  "spell_page_with_comments": "https://www.wowhead.com/spell=1804/",
-  "black_claw_page": "https://www.wowhead.com/pet-ability=919/black-claw",
-  "battle_pet_page": "https://www.wowhead.com/battle-pet-abilities",
-  "email": "howdydoodyxd@gmail.com",
-  "password": "Qwerty",
-  "base_api": "https://restful-booker.herokuapp.com",
-  "browser_id": 1,
-   "credentials": {
-    "username": "admin",
-    "password": "password123"
-  }
+  "app_url": "https://aquapolis.ua/",
+  "valid_name": "Misha",
+  "valid_surname": "Sutiahin",
+  "valid_phone_number": "+380681349853",
+  "valid_email": "misha.sutiahin@gmail.com",
+  "product_17717_price": "16",
+  "browser_id": 1
 }

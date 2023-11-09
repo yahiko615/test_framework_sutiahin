@@ -1,1 +1,0 @@
-from work_with_mongo import base_mongo, weapons_collection, character_collection

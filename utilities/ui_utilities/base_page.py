@@ -5,6 +5,7 @@ from selenium.webdriver import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+import re
 
 
 class BasePage:
@@ -25,6 +26,7 @@ class BasePage:
         element = self.__wait_until_element_visible(locator)
         if is_clear:
             element.clear()
+            element.send_keys(Keys.CONTROL + 'a')
         element.send_keys(value)
 
     def click(self, locator):
@@ -42,6 +44,11 @@ class BasePage:
         element = self.__wait_until_element_visible(locator)
         return element.text
 
+    def get_numeric_price_value(self, locator):
+        element = self.__wait_until_element_visible(locator)
+        text = element.text.replace("₴", "").strip()
+        return text
+
     def get_placeholder(self, locator):
         element = self.__wait_until_element_visible(locator)
         return element.placeholder
@@ -54,25 +61,10 @@ class BasePage:
         element = self.__wait_until_element_visible(locator)
         return element
 
-    def get_element_data_state(self, locator):
+    def get_element_data_item_qty(self, locator):
         element = self.__wait_until_element_visible(locator)
-        data_state = element.get_attribute("data-state")
-        return data_state
-
-    def get_element_data_hide_ui(self, locator):
-        element = self.__wait_until_element_visible(locator)
-        data_hide_ui = element.get_attribute("data-hide-ui")
-        return data_hide_ui
-
-    def get_element_data_class(self, locator):
-        element = self.__wait_until_element_visible(locator)
-        data_class = element.get_attribute("data-class")
-        return data_class
-
-    def get_element_data_paused(self, locator):
-        element = self.__wait_until_element_visible(locator)
-        data_paused = element.get_attribute("data-paused")
-        return data_paused
+        quantity = element.get_attribute("data-item-qty")
+        return quantity
 
     def get_element_style(self, locator):
         element = self.__wait_until_element_visible(locator)
@@ -105,26 +97,4 @@ class BasePage:
         except TimeoutException:
             return True
 
-    def move_slider_to(self, locator_left, locator_width, desired_position):
-        element = self.__wait_until_element_visible(locator_left)
-        element2 = self.__wait_until_element_visible(locator_width)
-        self._driver.execute_script("arguments[0].style.left = arguments[1]", element, desired_position)
-        self._driver.execute_script("arguments[0].style.width = arguments[1]", element2, desired_position)
 
-    def this_input_makes_me_mad(self, locator):
-        self._driver.execute_script("""
-    var inputElement = document.querySelector('.listview-filters-columns-filter-text');
-    var newValue = '4999';
-    inputElement.value = newValue;
-    var event = new KeyboardEvent('keydown', {key: 'Enter'});
-    document.dispatchEvent(event);
-    """)
-        element = self.__wait_until_element_visible(locator)
-        element.send_keys(Keys.ENTER)
-        time.sleep(3)
-
-    def press_enter(self):
-        self._driver.execute_script("""
-    var event = new KeyboardEvent('keydown', {key: 'Enter'});
-    document.dispatchEvent(event);
-    """)
